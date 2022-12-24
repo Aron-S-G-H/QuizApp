@@ -1,0 +1,46 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-title" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Arone Sadegh">
+    <!-- Tab bar name  -->
+    <title>Online Quiz</title>
+    <!-- Tab bar icon  -->
+    <link rel="shortcut icon" href="{% static 'Image/icon.png' %}">
+    <!-- Style Sheets -->
+    <link rel="stylesheet" href="{% static 'Css/style2.css' %}">
+</head>
+
+<body translate="no">
+
+{# Animated Background #}
+<div class='box'>
+    <div class='wave -one'></div>
+    <div class='wave -two'></div>
+    <div class='wave -three'></div>
+</div>
+
+<div class="login-page">
+    <div class="form">
+        <form class="login-form" method="post">
+            {% csrf_token %}
+
+            {% for error in form.fullname.errors %}
+                <p>{{ error }}</p>
+            {% endfor %}
+
+            {{ form.fullname }}
+            {{ form.password }}
+
+            <button type="submit">login</button>
+            <p class="message">Not registered? <a href="{% url 'account:register_page' %}">Create an account</a></p>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
